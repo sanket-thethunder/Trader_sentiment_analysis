@@ -1,0 +1,21 @@
+# Raw/source data
+data/*.csv
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local outputs
+outputs/
+pdf_assets/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
