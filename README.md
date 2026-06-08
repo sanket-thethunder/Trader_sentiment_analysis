@@ -1,57 +1,152 @@
-# Trader Performance vs Bitcoin Market Sentiment
+# 🚀 Trader Performance vs Bitcoin Market Sentiment
 
-Institutional-style analysis of the relationship between Hyperliquid trader performance and Bitcoin market sentiment.
+### Institutional-Style Quantitative Research on Hyperliquid Trader Behavior
 
-## Objective
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-green)
+![Research](https://img.shields.io/badge/Research-Quantitative-orange)
+![Finance](https://img.shields.io/badge/Domain-Crypto%20Markets-purple)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-This project explores how trader outcomes vary across Bitcoin Fear & Greed regimes. It joins daily sentiment classifications with fill-level Hyperliquid trader data, then analyzes realized PnL, win rate, traded volume, side behavior, account concentration, symbol concentration, and strategy implications.
+---
 
-## Deliverables
+## 📖 Overview
 
-- `reports/institutional_trader_sentiment_research_deck.pdf`  
-  Final presentation-style PDF report.
-- `reports/editable_trader_sentiment_research_report.docx`  
-  Editable Word report for review and modifications.
-- `reports/hyperliquid_trader_sentiment_analysis.xlsx`  
-  Supporting Excel workbook with analysis tables.
+This project investigates how trader performance changes across different Bitcoin market sentiment regimes using the **Bitcoin Fear & Greed Index** and **Hyperliquid trading activity data**.
 
-## Repository Structure
+The objective is to determine whether trader profitability, efficiency, trading volume, and directional behavior vary during periods of:
+
+* 😱 Extreme Fear
+* 😨 Fear
+* 😐 Neutral
+* 😊 Greed
+* 🚀 Extreme Greed
+
+The analysis follows an institutional research approach commonly used by hedge funds, quantitative trading firms, and market intelligence teams.
+
+---
+
+## 🎯 Research Questions
+
+* Do traders perform better during fear or greed markets?
+* How does profitability change across sentiment regimes?
+* Does trading activity increase during extreme market conditions?
+* Which trader groups contribute most to profits?
+* Which assets dominate trading activity?
+* Can sentiment be used as a practical trading signal?
+
+---
+
+## 📊 Key Metrics Analyzed
+
+| Metric               | Description                     |
+| -------------------- | ------------------------------- |
+| Realized PnL         | Closed profit and loss          |
+| Win Rate             | Percentage of profitable trades |
+| Trading Volume       | Total USD traded                |
+| Trader Concentration | Contribution of top accounts    |
+| Symbol Concentration | Contribution of top assets      |
+| Trade Direction      | Long vs Short behavior          |
+| PnL Efficiency       | PnL generated per $1000 traded  |
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+Fear & Greed Index
+        │
+        ▼
+Sentiment Classification
+        │
+        ▼
+Date-Level Join
+        │
+        ▼
+Hyperliquid Trade Data
+        │
+        ▼
+Performance Analytics
+        │
+        ▼
+Research Reports & Insights
+```
+
+---
+
+## 📂 Repository Structure
 
 ```text
 trader-sentiment-analysis/
-  data/
-    fear_greed_index.csv          # not committed by default
-    historical_data.csv           # not committed by default
-  reports/
-    institutional_trader_sentiment_research_deck.pdf
-    editable_trader_sentiment_research_report.docx
-    hyperliquid_trader_sentiment_analysis.xlsx
-  scripts/
-    build_trader_sentiment_report.py
-    build_trader_sentiment_pdf.py
-    build_trader_sentiment_docx.py
-  requirements.txt
-  README.md
+│
+├── data/
+│   ├── fear_greed_index.csv
+│   └── historical_data.csv
+│
+├── reports/
+│   ├── institutional_trader_sentiment_research_deck.pdf
+│   ├── editable_trader_sentiment_research_report.docx
+│   └── hyperliquid_trader_sentiment_analysis.xlsx
+│
+├── scripts/
+│   ├── build_trader_sentiment_report.py
+│   ├── build_trader_sentiment_pdf.py
+│   └── build_trader_sentiment_docx.py
+│
+├── requirements.txt
+└── README.md
 ```
 
-## Data
+---
 
-Expected input files:
+## 🔬 Methodology
 
-1. `data/fear_greed_index.csv`
-2. `data/historical_data.csv`
+### Data Sources
 
-The raw data files are ignored in `.gitignore` because trader data can be large and sensitive. If required for submission, upload them separately or document the source.
+#### Bitcoin Fear & Greed Index
 
-You can also point the scripts to another location:
+Used to classify market sentiment into five psychological regimes:
 
-```powershell
-$env:FEAR_GREED_CSV="D:\path\to\fear_greed_index.csv"
-$env:HISTORICAL_DATA_CSV="D:\path\to\historical_data.csv"
-python scripts\build_trader_sentiment_pdf.py
+| Score Range | Classification |
+| ----------- | -------------- |
+| 0–24        | Extreme Fear   |
+| 25–44       | Fear           |
+| 45–54       | Neutral        |
+| 55–74       | Greed          |
+| 75–100      | Extreme Greed  |
+
+#### Hyperliquid Trading Data
+
+Includes:
+
+* Account activity
+* Trade direction
+* Position size
+* Closed PnL
+* Trading timestamps
+* Asset traded
+
+---
+
+### Data Processing Pipeline
+
+1. Parse trade timestamps
+2. Convert timestamps to trading dates
+3. Merge trades with sentiment data
+4. Aggregate trader statistics
+5. Compute profitability metrics
+6. Generate institutional-style reports
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/trader-sentiment-analysis.git
+cd trader-sentiment-analysis
 ```
-
-## How To Reproduce
 
 Install dependencies:
 
@@ -59,45 +154,121 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Generate the Excel workbook:
+---
+
+## 🚀 Usage
+
+### Generate Excel Analysis
 
 ```bash
 python scripts/build_trader_sentiment_report.py
 ```
 
-Generate the PDF deck:
+### Generate PDF Research Deck
 
 ```bash
 python scripts/build_trader_sentiment_pdf.py
 ```
 
-Generate the editable DOCX:
+### Generate Editable DOCX Report
 
 ```bash
 python scripts/build_trader_sentiment_docx.py
 ```
 
-## Methodology Summary
+---
 
-- Trader timestamps are parsed from `Timestamp IST`.
-- The join key is calendar date in IST.
-- Sentiment classification comes from the Bitcoin Fear & Greed dataset.
-- Trader performance is measured using `Closed PnL`.
-- Normalized efficiency is calculated as `Closed PnL / Size USD * 1,000`.
-- Unmatched sentiment dates are excluded from sentiment-regime cuts.
+## 📈 Analytical Views Produced
 
-## Key Analytical Views
+* Sentiment Regime Scorecard
+* PnL Efficiency Analysis
+* Daily Performance Trends
+* Trader Concentration Analysis
+* Symbol Concentration Analysis
+* Long vs Short Behavior
+* Stress-Day Analysis
+* Sentiment-Based Trading Playbook
 
-- Sentiment regime scorecard
-- PnL efficiency by regime
-- Side and direction behavior
-- Daily sentiment versus realized PnL
-- Top account contribution
-- Top symbol contribution
-- Stress-day review
-- Strategy playbook by sentiment regime
+---
 
-## Notes
+## 💡 Example Insights
 
-This is a research and analytics project only. It is not investment advice.
+The framework enables discovery of patterns such as:
 
+* Traders becoming more active during extreme sentiment periods.
+* Profitability clustering around specific market regimes.
+* Increased concentration among top-performing accounts.
+* Certain assets outperforming under specific sentiment conditions.
+
+---
+
+## 📑 Deliverables
+
+### 📊 Research Deck
+
+Professional presentation-style PDF containing:
+
+* Executive Summary
+* Key Findings
+* Visualizations
+* Strategic Recommendations
+
+### 📈 Excel Workbook
+
+Detailed quantitative outputs including:
+
+* Aggregated metrics
+* Pivot summaries
+* Statistical breakdowns
+
+### 📝 Editable Report
+
+Comprehensive Word document suitable for:
+
+* Client presentations
+* Internal research
+* Portfolio submissions
+
+---
+
+## 🛠️ Technologies Used
+
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=python,vscode,git,github" />
+</p>
+
+* Python
+* Pandas
+* NumPy
+* OpenPyXL
+* ReportLab
+* Python-Docx
+
+---
+
+## 📚 Future Improvements
+
+* Machine Learning sentiment prediction
+* Hyperliquid API integration
+* Interactive Streamlit dashboard
+* Time-series forecasting
+* Trader clustering and segmentation
+* Automated report generation pipeline
+
+---
+
+## ⚠️ Disclaimer
+
+This project is intended solely for research, educational, and analytical purposes.
+
+Nothing in this repository should be interpreted as financial, trading, or investment advice.
+
+---
+
+## 👨‍💻 Author
+
+### Sanket Bachhav
+
+AI Engineer • Data Science • Machine Learning • Quantitative Analytics
+
+If you found this project interesting, consider giving it a ⭐ on GitHub.
